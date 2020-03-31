@@ -1,0 +1,143 @@
+// In Practice, You should use the statndard input/output
+// in order to receive a score properly.
+// Do not use file input and output. Please be very careful. 
+
+#include<iostream>
+
+using namespace std;
+int NGate;
+int Spots[61];
+int Gate[3][3];
+int Answer, Distance;
+void BT1(int step, int danhdau[61], int khoangcach){
+ int temp[61];
+ int Dis = khoangcach;
+ for(int i = 0; i < 61; i++){
+  temp[i] = danhdau[i];
+ }
+ if(step == 3){
+  if(Dis < Answer)
+   Answer = Dis;
+  return;
+ }
+ for(int i = 0; i < 3; i++){
+  Dis = khoangcach;
+  if(Gate[i][2] == 0){
+   Gate[i][2] = 1;
+
+   int SoNguoi = Gate[i][1];
+   int Pos=0;
+   while(SoNguoi){
+    while(!((Gate[i][0] + Pos <= NGate && temp[Gate[i][0] + Pos] == 0) || (Gate[i][0] - Pos > 0 && temp[Gate[i][0] - Pos] == 0))){
+     Pos++;
+    }
+    if(temp[Gate[i][0] - Pos] == 0 && Gate[i][0] - Pos > 0){
+     temp[Gate[i][0] - Pos] = 1;
+    }
+    else{
+     temp[Gate[i][0] + Pos] = 1;
+    }
+
+    SoNguoi--;
+    Dis += Pos+1; 
+   }
+
+   BT1(step+1, temp, Dis);x
+   Gate[i][2] = 0;
+   for(int i = 0; i < 61; i++){
+    temp[i] = danhdau[i];
+   }
+  }
+ }
+}
+
+void BT2(int step, int danhdau[61], int khoangcach){
+ int temp[61];
+ int Dis = khoangcach;
+ for(int i = 0; i < 61; i++){
+  temp[i] = danhdau[i];
+ }
+ if(step == 3){
+  if(Dis < Answer)
+   Answer = Dis;
+  return;
+ }
+ for(int i = 0; i < 3; i++){
+  Dis = khoangcach;
+  if(Gate[i][2] == 0){
+   Gate[i][2] = 1;
+
+   int SoNguoi = Gate[i][1];
+   int Pos=0;
+   while(SoNguoi){
+    while(!((Gate[i][0] + Pos <= NGate && temp[Gate[i][0] + Pos] == 0) || (Gate[i][0] - Pos > 0 && temp[Gate[i][0] - Pos] == 0))){
+     Pos++;
+    }
+    if(temp[Gate[i][0] + Pos] == 0 && Gate[i][0] + Pos <= NGate){
+     temp[Gate[i][0] + Pos] = 1;
+    }
+    else{
+     temp[Gate[i][0] - Pos] = 1;
+    }
+
+    SoNguoi--;
+    Dis += Pos+1; 
+   }
+
+   BT2(step+1, temp, Dis);
+   Gate[i][2] = 0;
+   for(int i = 0; i < 61; i++){
+    temp[i] = danhdau[i];
+   }
+  }
+ }
+}
+int main(int argc, char** argv)
+{
+ int test_case;
+ int T;
+ 
+ 
+ ios::sync_with_stdio(false);
+ 
+ /* 
+ The freopen function below opens input.txt in read only mode and 
+ sets your standard input to work with the opened file. 
+ When you test your code with the sample data, you can use the function
+ below to read in from the sample data file instead of the standard input.
+ So. you can uncomment the following line for your local test. But you
+ have to comment the following line when you submit for your scores.
+ */
+
+ freopen("Text.txt", "r", stdin);
+ freopen("Text1.txt", "w", stdout);
+ cin >> T;
+
+ /*
+    Read each test case from standard input.
+ */
+ for(test_case = 1; test_case <= T; ++test_case)
+ {
+  Answer = 1000000000;
+  cin >> NGate;
+  for(int i = 0; i < 3; i++){
+   cin >> Gate[i][0] >> Gate[i][1];
+   Gate[i][2] = 0;
+  }
+  for(int i = 0; i <= NGate; i++)
+   Spots[i] = 0;
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /*
+   Please, implement your algorithm from this section.
+  */
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  Distance = 0;
+  BT1(0, Spots, 0);
+  BT2(0, Spots, 0);
+  // Print the answer to standard output(screen).
+  cout << "Case #" << test_case << "\n" << Answer << endl;
+ }
+ return 0;//Your program should return 0 on normal termination.
+}

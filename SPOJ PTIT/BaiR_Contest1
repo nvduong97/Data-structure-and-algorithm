@@ -1,0 +1,27 @@
+// R - NGE
+#include<iostream>
+using namespace std;
+int t,n,a[100001],i,j;
+main(){
+	cin >> t;
+	while(t--){
+		cin >> n;
+		for(i=0; i<n; i++){
+			cin >> a[i];
+		}
+		int kt;
+		for(i=0; i<n; i++){
+			kt=0;
+			for(j=i+1; j<n; j++){
+				if(a[i] < a[j]){
+					cout << a[j] << " ";
+					kt=1;
+					break;
+				}
+			}
+			if(kt==0) cout << "-1 ";
+		}
+		cout << endl;
+	}
+	return 0;
+}

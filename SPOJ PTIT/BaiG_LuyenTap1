@@ -1,0 +1,16 @@
+package GiaiThuat;
+
+import java.util.Scanner;
+
+public class BaiG {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        int a=input.charAt(0)-'0'; // đổi xâu sang số
+        int b=input.charAt(4)-'0';
+        int c=input.charAt(8)-'0';
+        //.... + '0'; // đổi số sang xâu
+        if(a+b==c) System.out.println("YES");
+        else System.out.println("NO");
+    }
+}

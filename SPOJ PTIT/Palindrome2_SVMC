@@ -1,0 +1,180 @@
+Palindrome 2
+ 
+[Question]
+ 
+A palindrome is a word, phrase, verse, or sentence that reads the same backward or forwardlike â??levelâ?? or â??radarâ??.
+ 
+ 
+ 
+Create a program which inspects the vertical and horizontal lines of a 100x100 character matrix and returns the length of the longest palindrome.
+ 
+ 
+ 
+ï»¿
+ 
+ 
+ 
+ 
+In the above example, the longest palindrome is marked in red box and consists of 7 characters. Therefore, the program should return 7. It should be noted that the above example is the case of 8x8 matrix just for explanation, but the program should deal with 100x100 matrix.
+ 
+ 
+ 
+ 
+ 
+[Constraints]
+ 
+The character in each block is the char type in c language and can be â??Aâ??, â??Bâ?? or â??Câ??.
+ 
+The character matrix is a square.
+ 
+ABA and ABBA are both palindromes. A is also a palindrome with the length of 1 character.
+ 
+Only the vertical and horizontal lines should be evaluated. In the following example, the word in yellow blocks would a palindrome with the length of 7 characters. However, it would not be accepted, because it is not a straight line.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+[Input]
+ 
+The first line of the input file provides the length of the palindrome to search for. The test case is given in next lines.
+ 
+Total of 10 test cases are given.
+ 
+ 
+ 
+ 
+ 
+[Output]
+ 
+The output file outputs the test case number following the â??#â?? symbol. It is followed by a space, and then the length of the longest palindrome.
+ 
+ 
+ 
+ 
+ 
+[Input Example] 
+ 
+1
+ 
+CCBBCBAABCCCBABCBCAAAACABBACCCCACAABCBBACACAACABCBCCB...
+ 
+ACBAAAACCACCCBAACAAABACACCABCBCBABBBACBABCAACCBCCACBC...
+ 
+CCCACCBCBACBACBCABAABABCCAAAACCCCCBBAABBCCBCCCABBACAC...
+ 
+CABACBCBBCBABACABBBBBBABBCABCBCBCAABCBCCCBABACCCCABBA...
+ 
+BCCBCCACCBCBCABBBCCABAACACCBCCCBCCACCBBCBCCCBBCCBACBC...
+ 
+BBBBCBBAACABACCBCBCCABBBBCCAABCBBCACCBBCAAAABABABBABB...
+ 
+ABBAACCCACBBABBABCCCABABCACABABACCCBACACABCBCCCBABCCC...
+ 
+ABBBBAABCAACCBACBBAACACABCABACBAABCAABBCCCCCCACBCCCCA...
+ 
+ACCACABABBACBBAACCBBACBBCCACCACCABCCBABABBBACBACBAABC...
+ 
+BABACACCABCAACBAABCCACCACBCCAABBCBAABABAACAAAAAACCCBC...
+ 
+...
+ 
+2
+ 
+CBBABBACCAACCCAABABAACCABCBBCCABABBBBBCCACBCCCCBBBAAC...
+ 
+BBBCBACAAABAACACBCAABBAAABCABBBCAAACBAABCAAAAACBABBAB...
+ 
+CAAAABCAABAACCBBABCCCACABABACBCCBCCBABABBCCCBCBACAAAC...
+ 
+BBBACBBBBBAACBBCBABBCBAABACCCBBBBCCCBBBCABCABCAABCBCA...
+ 
+ABBBBAABCBACCACBBCBBAABABCBCCAAABBCAAABBAABBCACABAABA...
+ 
+ABCBACAAACCCAAABCACABBAABBCAACCBABCCACBABBBABAABAACBB...
+ 
+ACACABCBAAACCACABABBCABCBABAAABCBCCABABCCAACACBCBABCA...
+ 
+ACCBACACCAAAABABACABABBBBABBAABABBBBACBACABABACACACAA...
+ 
+AAACCCCCBCAACCCCCAAAACBCACBBABBBBBABABBCCCCBBAACCBBCB...
+ 
+CCABCCBBCAAAACACBBBBAAAACABACABCCCBACBABBACCAABAAACAB...
+ 
+...
+ 
+ 
+ 
+[Output Example]
+ 
+#1 18
+ 
+#2 17
+ 
+import java.util.Scanner;
+ 
+public class Solution {
+	public static void main(String[] args) {
+	//	System.setIn(new FileInputStream("inputPalindrome2.txt"));
+		Scanner sc = new Scanner(System.in);
+ 
+		String A[];
+ 
+		for (int tc = 1; tc <= 10; tc++) {
+			int max = 0;
+ 
+			tc = sc.nextInt();
+			A = new String[100];
+			for (int i = 0; i < 100; i++) {
+ 
+				A[i] = sc.next();
+			}
+			for (int n = 1; n <= 100; n++) {
+				for (int i = 0; i < 100; i++) {
+					for (int j = 0; j <= 100 - n; j++) {
+						boolean check = true;
+						for (int j2 = 0; j2 <= n / 2 - 1; j2++) {
+							if (A[i].charAt(j+j2) != A[i].charAt(n + j - 1 - j2)) {
+								check = false;
+								break;
+							}
+						}
+						if (check == true) {
+							if(n>max)
+							{
+								max=n;
+							}
+ 
+						}
+					}
+ 
+				}
+				for (int j = 0; j < 100; j++) {
+					for (int i = 0; i <= 100-n; i++) {
+						boolean check = true;
+						for (int i2 = 0; i2 <= n / 2 - 1; i2++) {
+							if (A[i2+i].charAt(j) != A[n + i - 1 - i2].charAt(j)) {
+								check = false;
+								break;
+							}
+						}
+						if (check == true) {
+							if(n>max)
+							{
+								max=n;
+							}
+ 
+						}
+					}
+			}
+ 
+			
+		}
+			System.out.println("#" + tc + " " + max);
+	}
+	}
+}

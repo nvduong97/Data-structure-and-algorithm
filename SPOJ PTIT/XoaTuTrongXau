@@ -1,0 +1,39 @@
+/*
+2
+Abc ddd abdc aaa bbb abc ddD XY
+aBc
+ACHDNC XXXX YYYY ABC ABC XXXX
+XxXx 
+*/
+
+
+package datastructuresandalgorithms;
+
+import java.util.Scanner;
+
+public class XoaTuTrongXau{
+    static String XuLy(String s1, String s2){
+        StringBuilder s = new StringBuilder();
+        String[] arr = s1.split(" ");
+        for(int i=0; i<arr.length; i++){
+            if(!arr[i].equalsIgnoreCase(s2)){
+                s.append(arr[i]+" ");
+            }
+        }
+        s.deleteCharAt(s.length()-1);
+        return s.toString();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int test_Case;
+        test_Case = Integer.parseInt(sc.nextLine());
+        String s1, s2;
+        for(int i=1; i<=test_Case; i++){
+            s1 = sc.nextLine();
+            s2 = sc.nextLine();
+            System.out.println("Test "+i+": "+XuLy(s1,s2));   
+        }
+    }
+   
+}
+

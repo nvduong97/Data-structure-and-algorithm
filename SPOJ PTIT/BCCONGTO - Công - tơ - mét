@@ -1,0 +1,25 @@
+https://www.spoj.com/PTIT/problems/BCCONGTO/
+
+// cong to met
+// note: trong tin hoc, cac con so deu co lien he voi nhau, khong phai chung tu dung sinh ra
+// trong toan hoc cung vay, ko phai tu dung no dung don le doc lap voi nhau. Ma co moi quan he than thiet vs nhau het do
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+	while(1){
+		string s;
+		cin >> s;
+		if(s=="0"){
+			return 0;
+		}
+		else{
+			long long sum=0;
+			for(int i=0; i<s.size(); i++){
+				int so=s[i]-'0'; // doi xau sang so
+				if(so>4) so=so-1;
+				sum=sum*9+so;
+			}
+			cout << s << ": " << sum << endl;
+		}
+	}
+}

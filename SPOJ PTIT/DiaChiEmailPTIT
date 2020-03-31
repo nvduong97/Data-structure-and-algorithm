@@ -1,0 +1,52 @@
+/*
+5    
+nGUYEn    quaNG   vInH
+       tRan   thi THU    huOnG
+    nGO   quoC  VINH
+  lE            tuAn    aNH 
+   Nguyen QUAN vinh
+   
+   */
+   
+   package GiaiThuat;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DiaChiEmailPTIT {
+    static ArrayList<String> arrayList = new ArrayList<>();
+
+    static String XuLy(String s){
+        s=s.toLowerCase();
+        s=s.trim();
+        s=s.replaceAll("\\s++"," ");
+        StringBuilder s2 = new StringBuilder();
+        String[] arr = s.split(" ");
+        s2.append(arr[arr.length-1]);
+        for(int i=0; i<arr.length-1; i++){
+            s2.append(arr[i].charAt(0));
+        }
+        arrayList.add(s2.toString());
+        int count=0;
+        for(String str: arrayList){
+            if(s2.toString().equals(str)){
+                count++;
+            }
+        }
+        if(count > 1) s2.append(count);
+        s2.append("@ptit.edu.vn");
+
+        return s2.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s;
+        int test_Case;
+        test_Case = Integer.parseInt(sc.nextLine());
+        for(int i=0; i<test_Case; i++){
+            s=sc.nextLine();
+            System.out.println(XuLy(s));
+        }
+    }
+}

@@ -1,0 +1,9 @@
+// source: https://www.spoj.com/PTIT/problems/P181SUMA/
+#include<iostream>
+using namespace std;
+int main(){
+	long long k;
+	cin >> k;
+	cout << 3*k+2; // n=3k+2
+	return 0;
+} 

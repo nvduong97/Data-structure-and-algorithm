@@ -1,0 +1,32 @@
+https://www.spoj.com/PTIT/problems/ALGOPRO4/
+
+// co so, doi nhi phan sang bat phan
+// 1100 => 001100 => 001 110 => 14
+// 11001100 => 011001100 => 011 001 100 => 314
+// size cua so do phai chia het cho 3
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+	string s;
+	cin >> s;
+	while(s.size()%3!=0){
+		s = '0' + s;
+	}
+	string find="";
+	for(int i=0; i<s.size(); i++){
+		find+=s[i];
+		if(find.size()%3==0){
+			if(find=="000") cout << 0;
+			if(find=="001") cout << 1;
+			if(find=="010") cout << 2;
+			if(find=="011") cout << 3;
+			if(find=="100") cout << 4;
+			if(find=="101") cout << 5;
+			if(find=="110") cout << 6;
+			if(find=="111") cout << 7;
+			find="";
+		}
+		
+	}
+	return 0;
+}

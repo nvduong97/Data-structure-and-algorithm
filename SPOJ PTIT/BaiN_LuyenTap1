@@ -1,0 +1,30 @@
+package GiaiThuat;
+
+import java.util.Scanner;
+
+public class BaiN {
+    static String Process(String s){
+        s=s.trim();
+        s=s.toLowerCase();
+        s=s.replaceAll("\\s+"," ");
+        String[] hoTen = s.split(" ");
+        StringBuffer s1;
+        StringBuffer s2 = new StringBuffer();
+        for(int i=0; i<hoTen.length; i++){
+            s1 = new StringBuffer(hoTen[i]);
+            s1.setCharAt(0,Character.toUpperCase(s1.charAt(0)));
+            s2.append(s1+" ");
+        }
+        s2.deleteCharAt(s2.length()-1); // xóa bỏ dấu space
+        return s2.toString(); // biểu diễn 1 đối tượng bất kỳ dưới dạng chuỗi
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        // n: test_case
+        for(int i=0; i<n; i++){
+            String s = sc.nextLine();
+            System.out.println(Process(s));
+        }
+    }
+}

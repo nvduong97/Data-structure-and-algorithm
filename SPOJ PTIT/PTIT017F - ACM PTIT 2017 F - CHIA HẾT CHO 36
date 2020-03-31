@@ -1,0 +1,29 @@
+https://www.spoj.com/PTIT/problems/PTIT017F/
+
+Mình làm thấy khá là ok, submit lên toàn báo biên dịch gặp lỗi, chắc là do bộ test server chấm Java chưa được ok cho lắm, còn C++ thì ok hơn
+
+package Test;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Chiahetcho36 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t=sc.nextInt();
+		BigInteger n, n1, n2;
+		n1 = new BigInteger("36");
+		n2 = new BigInteger("0");
+		while(0!=t--) {
+			n = sc.nextBigInteger();
+			if(n.mod(n1).equals(n2)){
+				System.out.println("YES");
+			}
+			else{
+				System.out.println("NO");
+			}
+		}
+	}
+
+}

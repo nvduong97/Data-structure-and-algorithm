@@ -1,0 +1,20 @@
+https://www.spoj.com/SVMC1609/problems/PITAGO/
+// P154SUMI - ROUND 4I - Bo 3 so Pytago
+#include<iostream>
+#include<cmath>
+using namespace std;
+main(){
+	int n;
+	cin >> n;
+	int dem=0;
+	for(int i=1; i<=n; i++){
+		for(int j=i; j<=n; j++){
+			int c = sqrt(i*i + j*j);
+			if((i*i + j*j == c*c) & c<=n){
+				dem++;
+			}
+		}
+	}
+	cout << dem;
+	return 0;
+}

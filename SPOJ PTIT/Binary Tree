@@ -1,0 +1,239 @@
+// CayNhiPhanTimKiem_SoNguyenTo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+/*
+- Tìm kiếm trên cây nhị phân
+- Xuất các Node có 2 con
+- Xuất các Node có 1 con
+- Xuất các Node lá
+- Tìm Max - Tìm Min
+- Xóa
+........
+*/
+#include "pch.h"
+#include <iostream>
+#include <cmath>
+using namespace std;
+struct node {
+	int data;
+	struct node *pLeft;
+	struct node *pRight;
+};
+typedef struct node NODE;
+
+typedef NODE *TREE;
+
+void Init(TREE &t) {
+	t = NULL;
+}
+
+void AddNodeToTree(TREE &t, int x) {
+	if (t == NULL) {
+		NODE *p = new NODE;
+		p->data = x;
+		p->pLeft = NULL;
+		p->pRight = NULL;
+		t = p;
+	}
+	else if (t->data < x) {
+		AddNodeToTree(t->pRight, x);
+	}
+	else if (t->data > x) {
+		AddNodeToTree(t->pLeft, x);
+	}
+}
+void Duyet_NLR(TREE &t) {
+	if (t != NULL) {
+		cout << t->data << " ";
+		Duyet_NLR(t->pLeft);
+		Duyet_NLR(t->pRight);
+	}
+}
+bool KiemTraNguyenTo(int n) {
+	if (n < 2) return false;
+	else {
+		for (int i = 2; i <= sqrt(n); i++) {
+			if (n%i == 0) return false;
+		}
+		return true;
+	}
+}
+void DemSoLuongNguyenTo(TREE &t, int &dem) {
+	if (t != NULL) {
+		if (KiemTraNguyenTo(t->data) == true) {
+			dem++;
+		}
+		// 2 cái dòng này có tác dụng là duyệt qua từng cái node
+		DemSoLuongNguyenTo(t->pLeft, dem);
+		DemSoLuongNguyenTo(t->pRight, dem);
+	}
+}
+// nếu NODE đó có tồn tại trong cây thì trả về NODE đó, không thì trả về NULL
+NODE *TimKiem(TREE &t, int x) {
+	if (t == NULL) {
+		return NULL;
+	}
+	else {
+		if (x < t->data) {
+			TimKiem(t->pLeft, x);
+		}
+		else if (x > t->data) {
+			TimKiem(t->pRight, x);
+		}
+		// t=x;
+		else {
+			return t;
+		}
+	}
+}
+// Xuất các Node có 2 con
+void XuatNode2Con(TREE &t) {
+	if (t != NULL) {
+		if (t->pLeft != NULL && t->pRight != NULL) {
+			cout << t->data << " ";
+		}
+		XuatNode2Con(t->pLeft);
+		XuatNode2Con(t->pRight);
+	}
+}
+// Xuất các Node có 1 con
+void XuatNode1Con(TREE &t) {
+	if (t != NULL) {
+		if ((t->pLeft != NULL && t->pRight == NULL) || (t->pLeft == NULL && t->pRight != NULL)) {
+			cout << t->data << " ";
+		}
+		XuatNode1Con(t->pLeft);
+		XuatNode1Con(t->pRight);
+	}
+}
+// Xuất các Node lá
+void NodeLa(TREE &t) {
+	if (t != NULL) {
+		if (t->pLeft == NULL && t->pRight == NULL) {
+			cout << t->data << " ";
+		}
+		NodeLa(t->pLeft);
+		NodeLa(t->pRight);
+	}
+}
+// Tìm Max
+
+void TimMax(TREE &t, int &MAX) {
+	if (t != NULL) {
+		if (t->data > MAX) {
+			MAX = t->data;
+		}
+		TimMax(t->pLeft, MAX);
+		TimMax(t->pRight, MAX);
+	}
+}
+// Tìm Min
+// dấu & người ta gọi là tham chiếu để truyền giá trị vào, hay có thể dùng dấu * cũng được (con trỏ)
+void TimMin(TREE &t, int &MIN) {
+	if (t != NULL) {
+		if (t->data < MIN) {
+			MIN = t->data;
+		}
+		TimMin(t->pLeft, MIN);
+		TimMin(t->pRight, MIN);
+	}
+}
+// Xóa
+void Menu(TREE &t) {
+	while (true) {
+		cout << "\n 0. Exit";
+		cout << "\n 1. Add data";
+		cout << "\n 2. Display binary tree";
+		cout << "\n 3. Dem so luong so nguyen to trong Tree";
+		cout << "\n 4. Tim kiem tren cay nhi phan";
+		cout << "\n 5. Xuat cac node co 2 con";
+		cout << "\n 6. Xuat cac node co 1 con";
+		cout << "\n 7. Xuat cac node la";
+		cout << "\n 8. Tim Max";
+		cout << "\n 9. Tim Min";
+		cout << "\n 10. Xoa";
+		cout << "\n===================\n";
+		int choice;
+		cout << "Enter choice: ";
+		cin >> choice;
+		switch (choice) {
+		case 0: {
+			exit(0);
+		}
+		case 1: {
+			int x;
+			cout << "Enter x: ";
+			cin >> x;
+			AddNodeToTree(t, x);
+			break;
+		}
+		case 2: {
+			cout << "Display NLR: ";
+			Duyet_NLR(t);
+			break;
+		}
+		
+		case 3: {
+			cout << "Dem so luong nguyen to trong Tree: ";
+			int dem = 0;
+			DemSoLuongNguyenTo(t, dem);
+			cout << dem;
+			break;
+		}
+		case 4: {
+			int x;
+			cout << "Enter x: ";
+			cin >> x;
+			NODE *p = TimKiem(t, x);
+			if (TimKiem(t, x)==NULL) {
+				cout << "Khong ton tai " << x << " trong cay";
+			}
+			else {
+				cout << x << " ton tai trong cay.";
+			}
+			break;
+		}
+		case 5: {
+			XuatNode2Con(t);
+			break;
+		}
+		case 6: {
+			XuatNode1Con(t);
+			break;
+		}
+		case 7: {
+			NodeLa(t);
+			break;
+		}
+		case 8: {
+			int MAX = INT_MIN;
+			TimMax(t, MAX);
+			cout << "MAX = " << MAX;
+			break;
+		}
+		case 9: {
+			int MIN = INT_MAX;
+			TimMin(t, MIN);
+			cout << "MIN = " << MIN;
+			break;
+		}
+		case 10: {
+
+			break;
+		}
+		default: {
+			cout << "Nhap sai vui long nhap lai";
+			break;
+		}
+
+		}
+	}
+}
+
+int main()
+{
+	TREE t;
+	Init(t);
+	Menu(t);
+	return 0;
+
+}
+

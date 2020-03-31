@@ -1,0 +1,31 @@
+package GiaiThuat;
+
+import java.util.Scanner;
+
+public class BaiO {
+    static String XuLy(String s){
+        s=s.trim();
+        s=s.replaceAll("\\s++", " ");
+        s=s.toLowerCase();
+        String[] arr = s.split(" ");
+        StringBuffer s1;
+        StringBuffer s2 = new StringBuffer();
+        for(int i=1; i<arr.length; i++){
+            s1=new StringBuffer(arr[i]);
+            s1.setCharAt(0, Character.toUpperCase(s1.charAt(0)));
+            s2.append(s1+" ");
+        }
+        s2.deleteCharAt(s2.length()-1);
+        s2.append(", ");
+        s2.append(arr[0].toUpperCase());
+        return s2.toString();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        for(int i=0; i<n; i++){
+            String s = sc.nextLine();
+            System.out.println(XuLy(s));
+        }
+    }
+}

@@ -1,0 +1,21 @@
+/*
+  bài này code thì cần giới hạn lại số đằng sau dấu phẩy là ok.
+  Tại mình tin đề bài quá nên ặc, run chạy xem kết quả mà ko thấy đúng, mà nộp lên thì vẫn AC. Đúng là ko nên tin vào ai đó quá nhiều
+*/
+
+#include<stdio.h>
+int giaiThua(int n){
+	if(n==0) return 1;
+	return n*giaiThua(n-1);
+}
+
+int main(){
+	int n;
+	scanf("%d",&n);
+	double kq=0;
+	for(int i=0; i<=n; i++){
+		kq+=(double)1/giaiThua(i);
+	}
+	printf("%.16f",kq);
+	return 0;
+}

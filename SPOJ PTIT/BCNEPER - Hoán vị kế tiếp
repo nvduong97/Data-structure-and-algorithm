@@ -1,0 +1,56 @@
+https://www.spoj.com/PTIT/problems/BCNEPER/
+
+#include<bits/stdc++.h>
+using namespace std;
+int n, a[1001];
+void Result(){
+	for(int i=0; i<n; i++){
+		cout << a[i];
+	}
+}
+int sinhHoanVi(){
+	int i=n-2;
+	while(i>0 && a[i]>=a[i+1]){
+		i--;
+	}
+	if(i>0){
+		int k=n-1;
+		while(a[i]>=a[k]){
+			k--;
+		}
+		swap(a[i],a[k]);
+		int r=i+1, s=n-1;
+		while(r<=s){
+			swap(a[r], a[s]);
+			r++; s--;
+		}
+		return 1;
+	}
+	return 0;
+}
+void Test(){
+	string s;
+	cin >> s;
+	n=s.length();
+	// doi xau sang so
+	for(int i=0; i<n; i++){
+		a[i] = s[i]-'0';
+	}
+	if(sinhHoanVi()){
+		Result();
+	}
+	else{
+		cout << "BIGGEST";
+	}
+}
+main(){
+	int t, stt;
+	cin >> t;
+	while(t--){
+		cin >> stt;
+		cout << stt << " ";
+		Test();
+		cout << endl;
+	}
+	return 0;
+}

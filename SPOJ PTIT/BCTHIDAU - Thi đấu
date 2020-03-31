@@ -1,0 +1,39 @@
+https://www.spoj.com/PTIT/problems/BCTHIDAU/
+
+// thi dau
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+	int n;
+	cin >> n;
+	string ten[n+1];
+	int Sub[n+1][4], Time[n+1][4], diemPhat[n+1];
+	int phat=0, max=0, viTri=0;
+	for(int i=0; i<n; i++){
+		int soBai=0;
+		diemPhat[i]=0;
+		cin >> ten[i];
+		for(int j=1; j<=4; j++){
+			cin >> Sub[i][j] >> Time[i][j];
+			if(Time[i][j]>0){ // tranh truong hop nhap vao thoi gian < 0
+				soBai++;
+				diemPhat[i]+=Time[i][j]+(Sub[i][j]-1)*20; // neu sub nhieu lan ko AC duoc thi cung khong tinh vao diem phat
+			} 
+		}
+		// tinh so bai lam duoc
+		if(max<soBai){
+			max=soBai;
+		 	viTri=i;
+		 	phat=diemPhat[i];
+		}
+		// truong hop cac doi lam duoc co cung so bai, tinh diem phat de tim ra doi vo dich
+		if(max==soBai){
+			if(phat>diemPhat[i]){
+				viTri=i;
+				phat=diemPhat[i]; // lay gia tri phat cua doi nho hon la doi thang cuoc
+			}
+		}
+	}
+	cout << ten[viTri] << " " << max << " " << phat;
+	return 0;
+}

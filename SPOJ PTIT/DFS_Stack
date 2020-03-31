@@ -1,0 +1,61 @@
+/*
+test: 
+13
+0 1 1 1 0 0 0 0 0 0 0 0 0
+1 0 1 1 0 1 0 0 0 0 0 0 0
+1 1 0 1 1 0 0 0 0 0 0 0 0
+1 1 1 0 0 0 1 0 0 0 0 0 0
+0 0 1 0 0 1 1 1 0 0 0 1 0
+0 1 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 1 1 1 0 1 0 0 0 0 0
+0 0 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 0 1 1 0 1
+0 0 0 0 0 0 0 0 1 0 1 1 1
+0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 1 1 0 1 0 1 0 0 0
+0 0 0 0 0 0 0 0 1 1 1 0 0
+*/
+
+// code:
+// DFS_Stack
+#include<iostream>
+using namespace std;
+int A[1001][1001], chuaXet[1001],i,j,n;
+void Init(){
+	cin >> n;
+	for(i=1; i<=n; i++){
+		chuaXet[i]=true; // dinh i chua duyet
+		for(j=1; j<=n; j++){
+			cin >> A[i][j];
+		}
+	}
+}
+void DFS_Stack(int u){
+	int Stack[1001],s,t,dau=1;
+	Stack[dau]=u; // dua dinh u vao dau ngan xep
+	cout << u << " "; // tham dinh u
+	chuaXet[u]=false; // xac nhan dinh u da duoc duyet
+	while(dau>0){ // lap trong khi Stack # rong
+		s=Stack[dau]; // lay dinh dau ngan xep
+		dau--;
+		for(t=1; t<=n; t++){
+			if(chuaXet[t] && A[s][t]){ // neu dinh t chua duyet va duong di tu s->t chua di
+				cout << t << " "; // tham dinh t
+				chuaXet[t]=false; // xac nhan dinh t da duoc duyet
+				Stack[++dau]=s; // push s to stack
+				Stack[++dau]=t; // push t to stack
+				break; // push only t to stack
+			}
+		}
+	}
+	
+}
+main(){
+	Init();
+	int u;
+	cout << "Duyet dinh: ";
+	cin >> u;
+	cout << "DFS(" << u << "):";
+	DFS_Stack(u);
+	return 0;
+}

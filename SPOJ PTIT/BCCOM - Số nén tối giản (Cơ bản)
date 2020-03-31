@@ -1,0 +1,39 @@
+https://www.spoj.com/PTIT/problems/BCCOM/
+
+#include<iostream>
+using namespace std;
+
+int soNen(int n){
+	int s=0;
+	while(n){
+		s+=n%10;
+		n/=10;
+	}
+	if(s<10) return s;
+	else{
+		int ss=0;
+		while(s){
+			ss+=s%10;
+			s/=10;
+		}
+		if(ss<10) return ss;
+		else{
+			int sss=0;
+			while(ss){
+				sss+=ss%10;
+				ss/=10;
+			}
+			return sss;
+		}
+	}
+}
+main(){
+	int t,n;
+	cin >> t;
+	while(t--){
+		cin >> n;
+		cout << soNen(n) << endl;
+	}
+	
+	return 0;
+}

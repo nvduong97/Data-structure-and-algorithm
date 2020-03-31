@@ -1,0 +1,21 @@
+https://www.spoj.com/PTIT/problems/PTIT121I/
+
+// PTIT121I - lap lai ky tu
+#include<iostream>
+using namespace std;
+main(){
+	int t,stt,r,i,j;
+	string s;
+	cin >> t;
+	while(t--){
+		cin >> stt >> r >> s;
+		cout << stt << " ";
+		for(i=0; i<s.length(); i++){
+			for(j=0; j<r; j++){
+				cout << s[i];
+			}
+		}
+		cout << endl;
+	}
+	return 0;
+}

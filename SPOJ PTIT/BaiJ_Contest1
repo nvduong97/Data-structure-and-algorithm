@@ -1,0 +1,23 @@
+// J - LUY THUA
+#include<iostream>
+using namespace std;
+int q = 1e9+7;
+long long luyThua(int n, int k){
+	if(k==0) return 1;
+	else{
+		long long p = luyThua(n,k/2);
+		p=p%q;
+		if(k%2==0) return p*p%q;
+		else
+			return (p*p%q)*n%q;
+	}
+}
+main(){
+	int t,n,k;
+	cin >> t;
+	while(t--){
+		cin >> n >> k;
+		cout << luyThua(n,k) << endl;
+	}
+	return 0;
+}

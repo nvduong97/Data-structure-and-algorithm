@@ -1,0 +1,25 @@
+//  0 - TIM KIEM NHI PHAN
+#include<iostream>
+using namespace std;
+int a[100001];
+main(){
+	int t,n,k,i,j;
+	cin >> t;
+	while(t--){
+		cin >> n >> k;
+		for(i=0; i<n; i++){
+			cin >> a[i];
+		}
+		int viTri=0, gan=0;
+		for(i=0; i<n; i++){
+			if(a[i]==k){
+				viTri=i+1; gan=1;
+			}
+		}
+		if(gan==1) cout << viTri << endl;
+		else{
+			cout << "NO" << endl;
+		} 
+	}
+	return 0;
+}

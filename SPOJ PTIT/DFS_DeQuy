@@ -1,0 +1,50 @@
+/* 
+test:
+13
+0 1 1 1 0 0 0 0 0 0 0 0 0
+1 0 1 1 0 1 0 0 0 0 0 0 0
+1 1 0 1 1 0 0 0 0 0 0 0 0
+1 1 1 0 0 0 1 0 0 0 0 0 0
+0 0 1 0 0 1 1 1 0 0 0 1 0
+0 1 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 1 1 1 0 1 0 0 0 0 0
+0 0 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 0 1 1 0 1
+0 0 0 0 0 0 0 0 1 0 1 1 1
+0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 1 1 0 1 0 1 0 0 0
+0 0 0 0 0 0 0 0 1 1 1 0 0
+*/
+
+// code
+// DFS_DeQuy
+#include<iostream>
+using namespace std;
+int A[1001][1001], chuaXet[1001],i,j,n;
+void Init(){
+	cin >> n;
+	for(i=1; i<=n; i++){
+		chuaXet[i]=true; // dinh i chua duyet
+		for(j=1; j<=n; j++){
+			cin >> A[i][j];
+		}
+	}
+}
+void DFS_DeQuy(int u){
+	cout << u << " ";
+	chuaXet[u] = false; // dinh u da duyet
+	for(int v=1; v<=n; v++){
+		if(A[u][v] != 0 && chuaXet[v]!=0){
+			DFS_DeQuy(v);
+		}
+	}
+}
+main(){
+	Init();
+	int u;
+	cout << "Duyet dinh: ";
+	cin >> u;
+	cout << "DFS(" << u << "):";
+	DFS_DeQuy(u);
+	return 0;
+}

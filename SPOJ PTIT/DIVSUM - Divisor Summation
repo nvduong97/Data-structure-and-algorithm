@@ -1,0 +1,30 @@
+// https://www.spoj.com/problems/DIVSUM/
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+main(){
+	int t,n, temp, s;
+	cin >> t;
+	while(t--){
+		s = 0;
+		cin >> n;
+		//temp = sqrt(double(n));
+		if(n==1){
+			cout << 0 << endl;
+		}
+		else{
+			s=1;
+			for(int i=2; i<=sqrt(n); i++){
+				if(n%i==0){
+					int d = n/i;
+					if(d!=i) s+=(d+i);
+					else s+=d;
+				}
+			}
+			cout << s << endl;
+		}
+		
+	}
+	return 0;
+} 

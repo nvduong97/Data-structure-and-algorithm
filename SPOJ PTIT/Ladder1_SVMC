@@ -1,0 +1,204 @@
+Level 2
+300 Point 
+ 
+Ladder1
+ 
+ 
+ 
+ 
+Time Limit
+ 
+For 10 test cases, 10 seconds for C/C++ and 20 seconds for Java.
+ 
+Submittal Limit
+ 
+99 times (Submittal limit decremented by 1 after each submittal)
+ 
+Scoring
+ 
+When an answer is submitted, it is tested with the given input.txt and the result is notified in real time. The result can be one of following.
+ 
+Pass: All test cases resulted in correct answers.
+ 
+Fail: The test generated wrong or partially correct answers, runtime error, time out, etc.
+ 
+ 
+ 
+ 
+ 
+ 
+There is a group of employees who take a walk after lunch. As the weather is getting hot, they decided to play a ladder game to decide who will buy the ice cream for the whole group. Mr. Kim decided to draw the ladder instead of participating in the game. After drawing the ladder, he wondered who would end up with â??Xâ?? and buy the ice cream. Create a program to find it.
+ 
+In the example shown in 
+ 
+, arbitrary vertical lines are added between two vertical lines with the starting points of x=0 and x=9 (two lines added in this example). Horizontal lines are randomly drawn between these vertical lines. The case of starting from x=0 will proceed as the arrow indicates. It goes down until it reaches a path to the right or left and makes the turn accordingly. Then it goes down again, makes a turn as needed, and then goes down. It is repeated until the bottom point is reached. To reach the â??Xâ?? mark, one has to start at the point x=4. Therefore the answer would be 4. Its path is shown in orange color.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1. Description of Ladder Game (Mini Map)
+ 
+ 
+ 
+Create a program returning a starting point X which will arrive a given destination in a ladder presented in a form of 100x100 2 dimensional matrix as shown in Figure 2. (The ladder is expressed in continuous â??1â?? on the surface filled with â??0â??. The arrival point is expressed in â??2â??)
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 2. Actual Ladder Created by a Test Case
+ 
+ 
+ 
+ 
+ 
+[Constraints]
+A horizontal line beginning on a vertical line never crosses over another vertical line.
+ 
+ 
+ 
+[Input]
+ 
+The first line of the input file provides the test case number. The test case is given in next lines.
+ 
+Total of 10 test cases are given.
+ 
+ 
+[Output]
+ 
+The output file outputs the test case number following the â??#â?? symbol. It is followed by a space, and then the x coordinate of the correct starting point is output.
+ 
+ 
+ 
+ 
+[Input Example] 
+ 
+ 
+ 
+1
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 1 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 0 0 0...
+1 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+1 1 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 0 0 0...
+1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0...
+ 
+...
+ 
+ 
+  
+ 
+ 
+[Output Example]
+ 
+ 
+ 
+#1 67
+ 
+...
+ 
+ =====================================================================================================================================
+ 1
+1000101001
+1000101111
+1000101001
+1000111001
+1000101001
+1111101111
+1000101001
+1111101001
+1000111001
+1000101002
+=========================================================================================================================================
+#include<iostream>
+using namespace std;
+/*
+https://photos.app.goo.gl/ynyayXdHSq445TwB8
+
+Cách làm đi từ 2 tới 1
+duyệt đi nếu có 1 thì đi xong xóa 1
+nếu a[i][j]==0 thì ko đi
+đi từ dưới lên  sẽ đi. Còn cách làm đi từ trên xuông thì phải đi lâu hơn và xét nhiều trường hợp hơn
+ưu tiên đi sang trái, sang phải trước rồi mới đi lên
+ - lưu ý: đó là cách làm này thì lại không làm được bài Ladder2
+ - cách khác: copy các ma trận đó rồi đi xong rồi xóa
+ - code theo biến hướng (1 biến hướng 3 giá trị) đó là cách làm thứ 2 của bài này
+ input bên là thí dụ cho ma trận 10x10. ma trận khá là giống trong hình của link: http://codesoeasy.weebly.com/home/ladder-2
+ khác mỗi là a[10][10] = 2.
+*/
+int main() {
+	int N;
+	int a[100][100];
+	//freopen("input.txt","r",stdin);
+	for (int tc = 1; tc <= 10; tc++) {
+		cin >> N;
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 100; j++) {
+				a[i][j] = 0;
+				cin >> a[i][j];
+			}
+		}
+		int start = 0;
+		int end = 0;
+		for (int i = 0; i < 100; i++) {
+			if (a[99][i] == 2) {
+				end = i;
+				break;
+			}
+		}
+		int i = 99;
+		int j = end;
+		int dir = 1;
+		int left = 0, right = 0;
+		while (true) {
+			// 1 la dang len, 0 la dang sang ngang.
+			//cout << i << " " << j << endl;
+			if (dir == 1) {
+				if (a[i][j - 1] == 1 && j - 1 >= 0) {
+					j--;
+					left = 1;
+					right = 0;
+					dir = 0;
+				}
+				else if (a[i][j + 1] == 1 && j + 1 <= 99) {
+					j++;
+					right = 1;
+					left = 0;
+					dir = 0;
+				}
+				else if (a[i - 1][j] == 1 && i - 1 >= 0) {
+					i--;
+				}
+			}
+			else if (dir == 0) {
+				if (a[i - 1][j] == 1 && i - 1 >= 0) {
+					i--;
+					dir = 1;
+				}
+				else if (a[i][j - 1] == 1 && j - 1 >= 0 && left == 1) {
+					j--;
+				}
+				else if (a[i][j + 1] == 1 && j + 1 <= 99 && right == 1) j++;
+			}
+			if (i == 0) break;
+		}
+		cout << "#" << tc << " " << j << endl;
+	}
+
+	return 0;
+
+}

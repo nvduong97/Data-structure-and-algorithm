@@ -1,0 +1,54 @@
+package GiaiThuat;
+
+        import java.util.Scanner;
+public class BaiC {
+    static boolean NguyenTo(int n)
+    {
+        if(n<2) return false;
+        else
+        {
+            for(int i=2; i<=Math.sqrt(n); i++)
+            {
+                if(n%i==0) return false;
+            }
+            return true;
+        }
+    }
+    static boolean ChuSoNguyenTo(int n)
+    {
+        while (n>0)
+        {
+            int chuSo=n%10;
+            if(chuSo!=2 && chuSo!=3 && chuSo!=5 && chuSo!=7) return false;
+            n=n/10;
+        }
+        return true;
+    }
+    static boolean TongNguyenTo(int n)
+    {
+        int sum=0;
+        while (n!=0)
+        {
+            sum=sum+n%10;
+            n=n/10;
+        }
+        return NguyenTo(sum);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        int a,b;
+        while(0!=t--)
+        {
+            a=sc.nextInt();
+            b=sc.nextInt();
+            int count=0;
+            for(int i=a; i<=b; i++)
+            {
+                if(NguyenTo(i) && ChuSoNguyenTo(i) && TongNguyenTo(i))
+                    count++;
+            }
+            System.out.println(count);
+        }
+    }
+}

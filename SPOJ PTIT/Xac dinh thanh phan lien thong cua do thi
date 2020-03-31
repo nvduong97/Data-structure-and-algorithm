@@ -1,0 +1,55 @@
+/*
+test:
+13
+0 0 1 0 1 0 1 0 0 0 0 0 0 
+0 0 0 1 0 1 0 0 0 0 0 0 0 
+1 0 0 0 1 0 1 0 0 0 1 0 0 
+0 1 0 0 0 1 0 1 0 1 0 0 0 
+1 0 1 0 0 0 1 0 1 0 1 0 1 
+0 1 0 1 0 0 0 1 0 1 0 0 0 
+1 0 1 0 1 0 0 0 1 0 0 0 0 
+0 0 0 1 0 1 0 0 0 1 0 1 0 
+0 0 0 0 1 0 1 0 0 0 1 0 1 
+0 0 0 1 0 1 0 1 0 0 0 1 0 
+0 0 1 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 1 0 1 0 0 0 
+0 0 0 0 1 0 0 0 1 0 1 0 0 
+*/
+// code:
+// Duyet-TPLT
+// Xac dinh thanh phan lien thong cua do thi
+#include<iostream>
+int A[1001][1001], chuaXet[1001], i,j,n;
+using namespace std;
+void Init(){
+	cin >> n;
+	for(i=1; i<=n; i++){
+		chuaXet[i]=true;
+		for(j=1; j<=n; j++){
+			cin >> A[i][j];
+		}
+	}
+}
+void DFS(int u){
+	cout << u << " ";
+	chuaXet[u]=false;
+	int v;
+	for(v=1; v<=n; v++){
+		if(chuaXet[v] && A[u][v]){
+			DFS(v);
+		}
+	}
+}
+main(){
+	Init();
+	int u, count=0;
+	for(u=1; u<=n; u++){
+		if(chuaXet[u]){
+			count++;
+			cout << "Thanh phan lien thong: " << count << ":" << endl;
+			DFS(u);
+			cout << endl;
+		}
+	}
+	return 0;
+}

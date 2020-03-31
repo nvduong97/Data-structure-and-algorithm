@@ -1,0 +1,22 @@
+// https://www.spoj.com/SVMC1609/problems/FIBONACI/
+#include<iostream>
+using namespace std;
+void Fibo(int n){
+	int g[n];
+	int f1=1, f2=1; g[1]=1, g[2]=1;
+	for(int i=3; i<=n; i++){
+		g[i]=f1+f2;
+		f1=f2;
+		f2=g[i];
+	}
+	for(int i=1; i<=n; i++){
+		cout << g[i] << " ";
+	}
+	
+}
+main(){
+	int n;
+	cin >> n;
+	Fibo(n);
+	return 0;
+} 

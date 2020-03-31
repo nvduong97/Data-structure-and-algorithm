@@ -1,0 +1,51 @@
+https://www.spoj.com/PTIT/problems/PTIT121L/
+bài này chia ra làm 2 trường hợp:
+TH1: 3 tam giác có 3 cạnh chiều dài bằng nhau, diện tích hv = tổng dt 3 hcn, kiểm tra là số chính phương là OK
+TH2: 2 tam giác (có chiều dài nhỏ hơn) có tổng chiều rộng = chiều dài của hcn kia là ok
+
+note: bài này khốn nạn ở chỗ là phải để long long mới AC được, mặt dù đề cho là 10^9, cái này thì int thôi chứ :)))
+
+
+// ghep hinh
+#include<bits/stdc++.h>
+using namespace std;
+long long checkChinhPhuong(long long n){
+	long long t = sqrt(n);
+	if(t*t==n) return t;
+	return 0;
+}
+main(){
+	long long a,b,c,d,e,f;
+	cin >> a >> b >> c >> d >> e >>f;
+	// gia su: a la chieu rong, b la chieu dai hcn so 1
+	// gia su: c la chieu rong, d la chieu dai hcn so 2
+	// gia su: e la chieu rong, f la chieu dai hcn so 3
+	long long s=a*b+c*d+e*f;
+	long long y=checkChinhPhuong(s);
+	if(y==0) cout << 0;
+	else{
+		if(a>b) swap(a,b);
+		if(c>d) swap(c,d);
+		if(e>f) swap(e,f);
+		// TH1: 3 canh chieu dai hcn co chieu dai bang nhau
+		if(b==d && d==f && f==y) cout << y;
+		// TH2: 2 canh chieu rong cua 2 hcn co tong bang chieu dai cua hcn lon nhat
+		else{
+			// gia su hcn (a,b) co chieu dai lon nhat
+			if(d>b){
+				swap(a,c);
+				swap(b,d);
+			}
+			if(f>b){
+				swap(a,e);
+				swap(b,f);
+			}
+			if(b==y){
+				if(d+e==b || d+f==b || c+e==b || c+f==b) cout << y;
+			//	else cout << 0;
+			}
+			else cout << 0;
+		}
+	}
+	return 0;
+}

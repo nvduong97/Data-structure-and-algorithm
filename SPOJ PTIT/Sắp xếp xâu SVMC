@@ -1,0 +1,128 @@
+package OnTap;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/*
+ * For Trâu, if-else Trâu chó
+ * have Strings: ZRO, ONE, TWO, THR, FOR, FIV, SIX, SEN, EGT, NIN
+ Test case:
+ 2
+#1 5
+ONE TWO ONE ZRO TWO
+#2 8
+TWO ONE ZRO THR NIN FIV FIV FOR
+ */
+public class SapXepXau {
+	static int StrToInt(String s) {
+		if(s.equals("ZRO")) {
+			return 0;
+		}
+		if(s.equals("ONE")) {
+			return 1;
+		}
+		if(s.equals("TWO")) {
+			return 2;
+		}
+		if(s.equals("THR")) {
+			return 3;
+		}
+		if(s.equals("FOR")) {
+			return 4;
+		}
+		if(s.equals("FIV")) {
+			return 5;
+		}
+		if(s.equals("SIX")) {
+			return 6;
+		}
+		if(s.equals("SEN")) {
+			return 7;
+		}
+		if(s.equals("EGT")) {
+			return 8;
+		}
+		if(s.equals("NIN")) {
+			return 9;
+		}
+		return -1;
+		
+	}
+	static String IntToStr(int n) {
+		if(n==0) {
+			return "ZRO";
+		}
+		if(n==1) {
+			return "ONE";
+		}
+		if(n==2) {
+			return "TWO";
+		}
+		if(n==3) {
+			return "THR";
+		}
+		if(n==4) {
+			return "FOR";
+		}
+		if(n==5) {
+			return "FIV";
+		}
+		if(n==6) {
+			return "SIX";
+		}
+		if(n==7) {
+			return "SEV";
+		}
+		if(n==8) {
+			return "EGT";
+		}
+		if(n==9) {
+			return "NIN";
+		}
+		return null;
+	}
+	public static void main(String[] args) {
+		try {
+			System.setIn(new FileInputStream("SapXepXau.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Scanner sc = new Scanner(System.in);
+		int i,j,tc,test,n,t;
+		String s,s1,s2;
+		int a[] = new int[1000];
+		t = Integer.parseInt(sc.nextLine()); // nextLine() chỗ này đọc t bộ test rồi xuống dòng
+		for(tc=1; tc<=t; tc++) {
+			s = sc.next(); // đọc tới #1
+		
+			n = Integer.parseInt(sc.next()); // đọc số 5 trừ dấu space
+			// trong C++ thì cin giống như next() của Java
+			// nếu để 1 bộ test mà n = Integer.parseInt(sc.next()); là bị NumberformatException luôn vì khi nó đọc xuống dòng ko có gì thì nó sẽ bị bug
+			// next() đọc bỏ qua space, còn nextLine() thì đọc hết cả space cho tới khi xuống dòng
+			//n = sc.nextInt();
+			for(i=0; i<n; i++) {
+				s1=sc.next();
+				a[i] = StrToInt(s1);
+			}
+			for(i=0; i<n-1; i++) {
+				for(j=i+1; j<n; j++) {
+					if(a[i]>a[j]) {
+						int temp=a[i];
+						a[i]=a[j];
+						a[j]=temp;
+					}
+				}
+			}
+			System.out.print("#"+tc+" ");
+			for(i=0; i<n; i++) {
+				String s3;
+				s3 = IntToStr(a[i]);
+				System.out.print(s3+" ");
+			}
+			System.out.println();
+		}
+	}
+
+}

@@ -1,0 +1,42 @@
+package GiaiThuat;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BaiP {
+    static ArrayList<String> arr=new ArrayList<String>();
+    static String xuly(String s){
+        s=s.trim();
+        s=s.replaceAll("\\s+", " ");
+        s=s.toLowerCase();
+        String hoten[]=s.split(" ");
+        //StringBuilder s2=new StringBuilder();
+        StringBuffer s2 = new StringBuffer();
+        s2.append(hoten[hoten.length-1]);
+        int i=0;
+        for(i=0;i<hoten.length-1;i++){
+            s2.append(hoten[i].charAt(0));
+        }
+        arr.add(s2.toString());
+        int count=0;
+        for(String s1:arr){
+            if(s2.toString().equals(s1)){
+                count++;
+            }
+        }
+        if(count>1) s2.append(count+"");
+        s2.append("@ptit.edu.vn");
+        return s2.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        int test_case=Integer.parseInt(in.nextLine());
+        int i=0;
+        String s;
+        for(i=0;i<test_case;i++){
+            s=in.nextLine();
+            System.out.println(xuly(s));
+        }
+    }
+}

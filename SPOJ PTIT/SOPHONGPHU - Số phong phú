@@ -1,0 +1,20 @@
+https://www.spoj.com/SVMC1609/problems/SOPHONGPHU/
+
+// SOPHONGPHU - So phong phu
+#include<iostream>
+#include<cmath>
+using namespace std;
+int TongUocSo(int n){
+	int s=0;
+	for(int i=1; i<n; i++){
+		if(n%i==0) s+=i;
+	}
+	return s;
+}
+main(){
+	int n;
+	cin >> n;
+	if(TongUocSo(n)>n) cout << 1;
+	else cout << 0;
+	return 0;
+}

@@ -1,0 +1,29 @@
+package GiaiThuat;
+
+import java.util.Scanner;
+
+public class BaiB {
+    static boolean Test(int a)
+    {
+        int cuoi=a%10;
+        while (a>9)
+        {
+            a=a/10;
+        }
+        int dau=a;
+        if(dau==cuoi) return true;
+        return false;
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        int a;
+        while(0!=t--)
+        {
+            a=sc.nextInt();
+            if(Test(a)) System.out.println("YES");
+            else System.out.println("NO");
+        }
+    }
+}

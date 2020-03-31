@@ -1,0 +1,27 @@
+- d: ngưỡng
+- g: nhãn
+- Ước lượng x ?
+t=1
+n=100
+2 ngưỡng x1,x2 ? nghĩa là x1 max, x2 min sao cho tỉ lệ lỗi ít nhất, if tỉ lệ % lỗi bằng nhau thì sẽ lấy giá trị nhỏ hơn
+
+Giải thuật:
+- phân loại nhãn: g=1 thì tách riêng d ra (254,630,1324,1345,...) => tăng dần (a1[i])
+				  g=0 thì tách riêng d ra(234,428,522,546,600,1028,...) => tăng dần a2[i]
+- sắp xết lại các giá trí: 
+count=0
+- duyệt : x1 từ vị trí a1[n-1] 
+		  x2 từ vị trí a1[0] 
+		  
+		  
+	g=0	  234,428,526,546,600,1024 a1[] x1
+	g=1	  254,630,1234,1342,1345 a2[] x2
+	x1=1024 thì có 2 lỗi
+	x1=600 thì có 2 lỗi
+	x1=546 thì có 3 lỗi
+	
+	=> tìm ra giá trị count chính là % lỗi cần tìm nhỏ nhất => suy ra ngưỡng cần tìm 
+  
+  https://drive.google.com/file/d/1vrYbtzjbgMDvtPc6NnXPD8eRoQ_3T7an/view?usp=sharing
+  
+  https://drive.google.com/file/d/1vrYbtzjbgMDvtPc6NnXPD8eRoQ_3T7an/view?usp=sharing

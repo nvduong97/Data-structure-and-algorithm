@@ -1,0 +1,18 @@
+https://www.spoj.com/SVMC1609/problems/TEST/
+
+// TEST - Life, the Universe, and Everything
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+main(){
+	int n;
+	do{
+		cin >> n;
+		if(n==42){
+			break;
+		}
+		cout << n << endl;
+	}while(n!=42);
+	return 0;
+}

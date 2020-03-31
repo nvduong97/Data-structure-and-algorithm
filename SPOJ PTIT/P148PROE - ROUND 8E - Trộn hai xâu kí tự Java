@@ -1,0 +1,47 @@
+package Test;
+import java.util.Scanner;
+class TronXau {
+	public static void main(String[] args) {
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			int n;
+			n = Integer.parseInt(sc.nextLine());
+			if(n==0) break;
+			String s1, s2, s;
+			s1 = sc.nextLine();
+			s2 = sc.nextLine();
+			s = sc.nextLine();
+			int kt;
+			int count=0;
+			while(true) {
+				count++;
+				if(count > 50) {
+					kt=0;
+					break;
+				}
+				String str="";
+				for(int i=0; i<n; i++) {
+					str+=s2.charAt(i);
+					str+=s1.charAt(i);
+				}
+				if(str.equals(s)) {
+					kt=1;
+					break;
+				}
+				
+				else {
+					s1="";
+					s2="";
+					for(int i=0; i<n; i++) {
+						s1+=str.charAt(i);
+					}
+					for(int i=0; i<n; i++) {
+						s2+=str.charAt(i+n);
+					}
+				}
+			}
+			if(kt==0) System.out.println("-1");
+			else System.out.println(count);
+		}
+	}
+}

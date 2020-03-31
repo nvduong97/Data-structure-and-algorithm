@@ -1,0 +1,19 @@
+// https://www.spoj.com/SVMC1609/problems/SODEP/
+// SODEP - So dep
+#include<iostream>
+using namespace std;
+int XuLy(int n){
+	int s=0;
+	while(n){
+		s+=n%10;
+		n=n/10;
+	}
+	return s;
+}
+main(){
+	int n;
+	cin >> n;
+	if(XuLy(n)%10==9) cout << "YES";
+	else cout << "NO";
+	return 0;
+}

@@ -1,0 +1,24 @@
+// A - CHIA HET CHO 2
+#include<iostream>
+#include<cmath>
+using namespace std;
+int n, t;
+main(){
+	cin >> t;
+	while(t--){
+		cin >> n;
+		if(n%2!=0) cout << "0" << endl;
+		else{
+			int dem=1;
+			for(int i=2; i<=sqrt(n); i++){
+				if(n%i==0){
+					if(i%2==0) dem++;
+					int d=n/i;
+					if(d!=i && d%2==0) dem++;
+				}
+			}
+			cout << dem << endl;
+		}
+	}
+	return 0;
+}

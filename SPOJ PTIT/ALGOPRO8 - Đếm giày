@@ -1,0 +1,28 @@
+https://www.spoj.com/PTIT/problems/ALGOPRO8/
+
+// dem giay
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+	int n,m;
+	cin >> n >> m;
+	int dem1=0;
+	while(n>0 && m>0){
+		dem1++;
+		n--;
+		m--;
+	}
+	int dem2=0;
+	while(n>=2 || m>=2){
+		if(n>0){
+			dem2++;
+			n=n-2;
+		} 
+		if(m>0){
+			dem2++;
+			m=m-2;
+		}
+	}
+	cout << dem1 << " " << dem2;
+	return 0;
+}

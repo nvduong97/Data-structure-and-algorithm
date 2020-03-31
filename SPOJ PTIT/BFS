@@ -1,0 +1,59 @@
+/*
+test: 
+13
+0 1 1 1 0 0 0 0 0 0 0 0 0
+1 0 1 1 0 1 0 0 0 0 0 0 0
+1 1 0 1 1 0 0 0 0 0 0 0 0
+1 1 1 0 0 0 1 0 0 0 0 0 0
+0 0 1 0 0 1 1 1 0 0 0 1 0
+0 1 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 1 1 1 0 1 0 0 0 0 0
+0 0 0 0 1 0 1 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 0 1 1 0 1
+0 0 0 0 0 0 0 0 1 0 1 1 1
+0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 1 1 0 1 0 1 0 0 0
+0 0 0 0 0 0 0 0 1 1 1 0 0
+*/
+
+// code:
+// BFS
+#include<iostream>
+using namespace std;
+int A[1001][1001], chuaXet[1001] ,n, i, j;
+void Init(){
+	cin >> n;
+	for(i=1; i<=n; i++){
+		chuaXet[i]=true;
+		for(j=1; j<=n; j++){
+			cin >> A[i][j];
+		}
+	}
+}
+void BFS(int u){
+	int Queue[1001], low=1, hight=1, v;
+	Queue[low]=u;
+	chuaXet[u]=false;
+	cout << u << " ";
+	while(low <= hight){
+		u = Queue[low];
+		low++;
+		for(v=1; v<=n; v++){
+			if(chuaXet[v] && A[u][v]){
+				hight++;
+				Queue[hight]=v;
+				chuaXet[v]=false;
+				cout << v << " ";
+			}
+		}
+	}
+}
+main(){
+	Init();
+	int u;
+	cout << "Duyet dinh: ";
+	cin >> u;
+	cout << "BFS(" << u << "): ";
+	BFS(u);
+	return 0;
+}

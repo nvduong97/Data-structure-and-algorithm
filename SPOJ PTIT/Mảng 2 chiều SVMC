@@ -1,0 +1,64 @@
+// https://drive.google.com/file/d/1KZ3tF6eXpOQPVuBxSXjAowFl6MHdQsyt/view?usp=sharing
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+//1
+//5
+//4 4 3 2 1
+//2 2 1 6 5
+//3 5 4 6 7
+//4 2 5 9 7
+//8 1 9 5 6
+// => 29
+int a[1001][1001];
+int b[1001] = { 0 }, c[1001] = { 0 }, d[1001] = { 0 }, e[1001] = { 0 };
+int main() {
+	int t,n,i,j;
+	cin >> t;
+	while (t--) {
+		cin >> n;
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < n; j++) {
+				cin >> a[i][j];
+			}
+		}
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < n; j++) {
+				b[i] += a[i][j];
+			}
+		}
+		sort(b, b + n);
+		int bmax = b[n - 1];
+		//cout << bmax; 29
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < n; j++) {
+				c[j] += a[i][j];
+			}
+		}
+		sort(c, c + n);
+		int cmax = c[n - 1];
+		//cout << cmax; 28
+		int dmax = 0, emax = 0;
+		for (i = -1; i < n-1; i++) {
+			for (j = -1; j < n-1; j++) {
+				if(i==j) dmax += a[i + 1][j + 1];
+				
+			}
+		}
+		//cout << dmax; 25
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < n; j++) {
+				if (i==n-j) emax += a[i][n - j];
+			}
+		}
+		//cout << emax; 21
+		int arr[4];
+		arr[0] = bmax, arr[1] = cmax, arr[2] = dmax, arr[3] = emax;
+		sort(arr, arr + 4);
+		cout << arr[3] << endl;
+	}
+
+	system("pause");
+	return 0;
+}

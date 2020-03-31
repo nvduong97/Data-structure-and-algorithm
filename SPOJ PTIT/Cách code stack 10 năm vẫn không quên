@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+/*
+	 Cách code stack 10 năm vẫn không quên đó là vẽ hình ra
+*/
+int t = -1, s[1000];
+void Push(int v) {
+	s[t + 1] = v;
+	t++;
+}
+
+int Pop() {
+	int v = s[t];
+	t--;
+	return v;
+}
+bool IsEmpty() {
+	return (t == -1);
+}
+int main() {
+	Push(1);
+	Push(2);
+	Push(3);
+	Push(4);
+	Push(5);
+	Pop();
+	Push(9);
+	for (int i = 0; i < 5; i++) {
+		cout << s[i] << " ";
+	}
+	cout << endl;
+	cout << IsEmpty() << endl;
+	system("pause");
+	return 0;
+}

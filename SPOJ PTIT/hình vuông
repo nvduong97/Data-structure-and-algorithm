@@ -1,0 +1,4 @@
+TH1: chiều dài 3 hcn = nhau và tổng diện tích 3 hcn là 1 số chính phương
+TH2: tìm ra 1 hcn có chiều dài lớn nhất là a = cạnh hình vuông
+thì 2 hcn còn lại lấy các cạnh cộng vs nhau từng cặp nếu =a & nếu tổng diện tích
+3 hcn là 1 số chính phương thì ok

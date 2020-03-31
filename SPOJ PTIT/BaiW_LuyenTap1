@@ -1,0 +1,17 @@
+package GiaiThuat;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class BaiW {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t= Integer.parseInt(sc.nextLine());
+        while (0!=t--){
+            BigInteger a =  sc.nextBigInteger();
+            BigInteger b =  sc.nextBigInteger();
+            a=a.subtract(b);
+            System.out.println(a);
+        }
+    }
+}

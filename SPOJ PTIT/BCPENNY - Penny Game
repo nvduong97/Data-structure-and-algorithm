@@ -1,0 +1,58 @@
+https://www.spoj.com/PTIT/problems/BCPENNY/
+
+// BCPENNY - Penny Game
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+	int t, stt, n;
+	string s;
+	string b1="TTT";
+	string b2="TTH";
+	string b3="THT";
+	string b4="THH";
+	string b5="HTT";
+	string b6="HTH";
+	string b7="HHT";
+	string b8="HHH";
+	cin >> t;
+	int b[9];
+	while(t--){
+		cin >> stt >> s;
+		cout << stt << " ";
+		n=s.length();
+		for(int i=1; i<=8; i++){
+			b[i]=0;
+		}
+		for(int i=0; i<n; i++){
+			if(s[i]==b1[0] && s[i+1]==b1[1] && s[i+2]==b1[2]){
+				b[1]++;
+			}
+			if(s[i]==b2[0] && s[i+1]==b2[1] && s[i+2]==b2[2]){
+				b[2]++;
+			}
+			if(s[i]==b3[0] && s[i+1]==b3[1] && s[i+2]==b3[2]){
+				b[3]++;
+			}
+			if(s[i]==b4[0] && s[i+1]==b4[1] && s[i+2]==b4[2]){
+				b[4]++;
+			}
+			if(s[i]==b5[0] && s[i+1]==b5[1] && s[i+2]==b5[2]){
+				b[5]++;
+			}
+			if(s[i]==b6[0] && s[i+1]==b6[1] && s[i+2]==b6[2]){
+				b[6]++;
+			}
+			if(s[i]==b7[0] && s[i+1]==b7[1] && s[i+2]==b7[2]){
+				b[7]++;
+			}
+			if(s[i]==b8[0] && s[i+1]==b8[1] && s[i+2]==b8[2]){
+				b[8]++;
+			}
+		}
+		for(int i=1; i<=8; i++){
+			cout << b[i] << " ";
+		}
+		cout << endl;
+	}
+	return 0;
+}
